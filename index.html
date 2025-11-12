@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Repin</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav>
+      
+      <a href="contacts.html" class="nav-link">Контакты</a>
+    </nav>
+  </header>
+
+  <main class="about-section">
+    <img src="images/photo.jpg" alt="Моё фото" class="profile-photo reveal" />
+    <div class="about-text">
+      <h1 class="reveal">Привет, я Дима Репин</h1>
+      <h2 class="reveal">Frontend Developer & UI Enthusiast</h2>
+      <p class="reveal">Функциональный код. Чистый дизайн.<br> Создаю современные веб-интерфейсы с вниманием к деталям и эстетике.</p>
+      <a href="contacts.html" class="btn reveal">Связаться</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Repin D.A.</p>
+  </footer>
+
+  <script>
+    // Анимация появления при прокрутке
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+      for (let el of reveals) {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Тень у шапки при прокрутке
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+  </script>
+</body>
+</html>

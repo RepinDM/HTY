@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Контакты </title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav>
+      <a href="index.html" class="nav-link">Назад</a>
+    </nav>
+  </header>
+
+  <main class="contacts-section">
+    <h1 class="reveal">Связаться со мной</h1>
+
+    <form class="contact-form reveal">
+      <input type="text" placeholder="Ваше имя" required />
+      <textarea placeholder="Сообщение" rows="5" required></textarea>
+      <button type="submit" class="btn">Отправить</button>
+    </form>
+
+    <div class="social-links reveal">
+      <a href="mailto:dmrepin26@yandex.ru">Email</a>
+      <a href="https://t.me/Repin26" target="_blank">Telegram</a>
+      <a href="https://github.com/RepinDM" target="_blank">GitHub</a>
+    </div>
+  </main>
+
+  <footer>
+    <p>Repin D.A.</p>
+  </footer>
+
+  <script>
+    // Анимация появления при прокрутке
+    const reveals = document.querySelectorAll('.reveal');
+    function revealOnScroll() {
+      for (let el of reveals) {
+        const windowHeight = window.innerHeight;
+        const elementTop = el.getBoundingClientRect().top;
+        if (elementTop < windowHeight - 100) {
+          el.classList.add('visible');
+        }
+      }
+    }
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+
+    // Тень у шапки при прокрутке
+    const header = document.querySelector('header');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 50) header.classList.add('scrolled');
+      else header.classList.remove('scrolled');
+    });
+
+    // Отправка формы в Telegram
+document.querySelector(".contact-form").addEventListener("submit", async function(e) {
+  e.preventDefault();
+
+  const name = e.target[0].value;
+  const message = e.target[1].value;
+
+  const text = `💬 Новое сообщение с сайта hty.univer:\n\n👤 Имя: ${name}\n📝 Сообщение: ${message}`;
+
+  const BOT_TOKEN = "8202085724:AAE_aPw0n5JC3Fx0ovcudN1y5_cTENZNBlM"; // ← вставь сюда токен от BotFather
+  const CHAT_ID = "6577512909";     // ← сюда твой ID из @getmyid_bot
+  const url = `https://api.telegram.org/bot${BOT_TOKEN}/sendMessage`;
+
+  try {
+    await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ chat_id: CHAT_ID, text: text })
+    });
+
+    alert("✅ Сообщение отправлено! Спасибо!");
+    e.target.reset();
+  } catch (err) {
+    alert("⚠️ Ошибка при отправке. Попробуйте позже.");
+    console.error(err);
+  }
+});
+
+  
+  </script>
+
+</body>
+</html>
