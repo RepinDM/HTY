@@ -1,20 +1,28 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Repin — Frontend Developer</title>
+  <title>Главная — Repin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Скрипт с темой и логикой (подключён до CSS, чтобы не мигала тема) -->
-  <script src="script.js"></script>
+  <!-- Фикс мигания темы: читаем localStorage до загрузки стилей -->
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html" class="logo">Repin</a>
+      <a href="index.html" class="logo">REPIN</a>
       <div class="nav-links">
         <a href="index.html" class="nav-link active">Главная</a>
         <a href="about.html" class="nav-link">Обо мне</a>
@@ -26,19 +34,18 @@
   </header>
 
   <main>
-    <!-- HERO с фото -->
+    <!-- HERO -->
     <section class="hero-section">
       <div class="hero-inner">
-        <div class="hero-photo-wrapper reveal">
-          <img src="images/photo.jpg" alt="Фото Дмитрия Репина" class="profile-photo" />
+        <div class="hero-photo-wrapper">
+          <img src="images/photo.jpg" alt="Дима Репин" class="profile-photo" />
         </div>
-        <div class="hero-content">
-          <p class="hero-label reveal">Frontend Developer</p>
+        <div class="hero-text">
+          <div class="hero-label">Frontend Developer</div>
           <h1 class="hero-title reveal">Привет! Я Дима Репин.</h1>
           <p class="hero-subtitle reveal">
-            Функциональный код. Чистый дизайн. Создаю современные веб-интерфейсы
-            с аккуратной вёрсткой и понятной структурой. Сейчас углубляюсь
-            в <strong>React</strong> и <strong>TypeScript</strong>.
+            Функциональный код. Чистый дизайн. Создаю современные веб-интерфейсы с аккуратной вёрсткой
+            и понятной структурой. Сейчас углубляюсь в <strong>React</strong> и <strong>TypeScript</strong>.
           </p>
           <div class="hero-actions reveal">
             <a href="about.html" class="btn">Подробнее обо мне</a>
@@ -52,41 +59,47 @@
     <!-- ЧЕМ МОГУ БЫТЬ ПОЛЕЗЕН -->
     <section class="services-section">
       <div class="container">
-        <h2 class="section-title reveal">Чем могу быть полезен</h2>
-        <p class="section-subtitle reveal">
-          Работаю c вёрсткой по макетам, аккуратными лендингами и интерфейсами без визуального шума.
+        <h2 class="section-title">Чем могу быть полезен</h2>
+        <p class="section-subtitle">
+          Работаю с вёрсткой по макетам, аккуратными лендингами и интерфейсами без визуального шума.
         </p>
+
         <div class="services-grid">
           <article class="service-card reveal">
             <h3>Лендинги и простые сайты</h3>
             <p>Собираю аккуратные лендинги по макету или с нуля: семантическая вёрстка, структура, базовая анимация.</p>
           </article>
+
           <article class="service-card reveal">
             <h3>Адаптивная вёрстка</h3>
             <p>Страницы, которые одинаково приятно выглядят на десктопе, планшете и телефоне.</p>
           </article>
+
           <article class="service-card reveal">
             <h3>Вёрстка по Figma</h3>
-            <p>Аккуратно переношу дизайн из Figma в код, соблюдая отступы, сетку и типографику.</p>
+            <p>Переношу дизайн из Figma в код, соблюдая сетку, отступы и типографику.</p>
           </article>
+
           <article class="service-card reveal">
             <h3>Правки и доработки</h3>
-            <p>Исправляю баги в вёрстке, правлю адаптив, навожу порядок в стилях и структуре проекта.</p>
+            <p>Правлю баги в вёрстке, настраиваю адаптив, упорядочиваю стили и структуру проекта.</p>
           </article>
         </div>
       </div>
     </section>
-        <!-- Те же три кнопки — для планшетов и мобилок, ниже блока "Чем могу быть полезен" -->
+
+    <!-- Нижний блок кнопок для планшетов и мобилок -->
     <div class="hero-actions hero-actions-bottom">
       <a href="about.html" class="btn">Подробнее обо мне</a>
       <a href="projects.html" class="btn">Смотреть проекты</a>
       <a href="contacts.html" class="btn">Связаться со мной</a>
     </div>
-
   </main>
 
   <footer>
-    <p>© 2025 Repin. Сделано с любовью к фронтенду.</p>
+    © 2025 Repin. Сделано с любовью к фронтенду.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

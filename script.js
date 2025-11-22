@@ -1,91 +1,88 @@
-// === 1. Мгновенная установка темы до загрузки стилей ===
-(function () {
+// Переключение темы
+const themeToggle = document.querySelector('.theme-toggle');
+
+function setTheme(mode) {
+  if (mode === 'dark') {
+    document.documentElement.classList.add('dark');
+    localStorage.setItem('theme', 'dark');
+    if (themeToggle) themeToggle.textContent = '☀️';
+  } else {
+    document.documentElement.classList.remove('dark');
+    localStorage.setItem('theme', 'light');
+    if (themeToggle) themeToggle.textContent = '🌙';
+  }
+}
+
+(function syncThemeOnLoad() {
   try {
-    const saved = localStorage.getItem('theme');
-    const prefersDark =
-      window.matchMedia &&
-      window.matchMedia('(prefers-color-scheme: dark)').matches;
-
-    const theme = saved || (prefersDark ? 'dark' : 'light');
-
-    if (theme === 'dark') {
-      document.documentElement.classList.add('dark');
+    const stored = localStorage.getItem('theme');
+    if (stored === 'dark') {
+      setTheme('dark');
+    } else {
+      setTheme('light');
     }
   } catch (e) {
-    // если localStorage недоступен — просто игнорируем
+    // если localStorage недоступен
   }
 })();
 
-// === 2. Всё остальное — после загрузки DOM ===
-document.addEventListener('DOMContentLoaded', () => {
-  // Reveal-анимация
-  const reveals = document.querySelectorAll('.reveal');
-
-  function revealOnScroll() {
-    for (let el of reveals) {
-      const windowHeight = window.innerHeight;
-      const elementTop = el.getBoundingClientRect().top;
-      if (elementTop < windowHeight - 80) {
-        el.classList.add('visible');
-      }
-    }
-  }
-
-  window.addEventListener('scroll', revealOnScroll);
-  revealOnScroll();
-
-  // Шапка + фон при скролле
-  const header = document.querySelector('header');
-
-  function handleScroll() {
-    if (!header) return;
-
-    if (window.scrollY > 10) header.classList.add('scrolled');
-    else header.classList.remove('scrolled');
-
-    if (window.scrollY > 20) document.body.classList.add('scrolled');
-    else document.body.classList.remove('scrolled');
-  }
-
-  window.addEventListener('scroll', handleScroll);
-  handleScroll();
-
-  // Тема (light / dark)
-  const themeToggle = document.querySelector('.theme-toggle');
-
-  function updateThemeIcon() {
-    if (!themeToggle) return;
+if (themeToggle) {
+  themeToggle.addEventListener('click', () => {
     const isDark = document.documentElement.classList.contains('dark');
-    themeToggle.textContent = isDark ? '☀️' : '🌙';
-  }
+    setTheme(isDark ? 'light' : 'dark');
+  });
+}
 
-  updateThemeIcon();
+// Скролл — тень у шапки и фон body
+const header = document.querySelector('header');
 
-  if (themeToggle) {
-    themeToggle.addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-      const isDark = document.documentElement.classList.contains('dark');
-      localStorage.setItem('theme', isDark ? 'dark' : 'light');
-      updateThemeIcon();
-    });
-  }
+function handleScroll() {
+  const scrolled = window.scrollY > 10;
+  document.body.classList.toggle('scrolled', scrolled);
+  if (header) header.classList.toggle('scrolled', scrolled);
+}
 
-  // Логика формы (только на contacts.html)
-  const form = document.getElementById('contactForm');
-  const formStatus = document.getElementById('formStatus');
+window.addEventListener('scroll', handleScroll);
+handleScroll();
 
-  if (form && formStatus) {
-    form.addEventListener('submit', (e) => {
-      e.preventDefault();
+// Reveal-анимация
+const revealItems = document.querySelectorAll('.reveal');
 
-      form.classList.add('sent');
-      formStatus.textContent = 'Спасибо! Сообщение отправлено (демо).';
+if ('IntersectionObserver' in window && revealItems.length) {
+  const observer = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    { threshold: 0.15 }
+  );
 
-      setTimeout(() => {
-        form.reset();
-        form.classList.remove('sent');
-        formStatus.textContent = '';
-      }, 2500);
-    });
-  }
-});
+  revealItems.forEach((el) => observer.observe(el));
+} else {
+  // fallback: сразу показать
+  revealItems.forEach((el) => el.classList.add('visible'));
+}
+
+// Форма контактов — фейковая отправка
+const contactForm = document.getElementById('contact-form');
+const formStatus = document.getElementById('form-status');
+
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    if (!contactForm.reportValidity()) return;
+
+    if (formStatus) {
+      formStatus.textContent = 'Спасибо! Сообщение не отправилось, но форма уже готова к интеграции 🙂';
+    }
+    contactForm.classList.add('sent');
+
+    setTimeout(() => {
+      contactForm.classList.remove('sent');
+    }, 1500);
+  });
+}

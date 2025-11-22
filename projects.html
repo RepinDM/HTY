@@ -2,18 +2,26 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Проекты — Repin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="script.js"></script>
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html" class="logo">Repin</a>
+      <a href="index.html" class="logo">REPIN</a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Главная</a>
         <a href="about.html" class="nav-link">Обо мне</a>
@@ -27,70 +35,73 @@
   <main>
     <section class="projects-section">
       <div class="container">
-        <h1 class="section-title reveal">Проекты</h1>
-        <p class="section-subtitle reveal">
+        <h1 class="section-title">Проекты</h1>
+        <p class="section-subtitle">
           Учебные и практические работы, на которых я прокачиваю вёрстку и фронтенд.
         </p>
+      </div>
 
-        <div class="projects-grid">
-          <article class="project-card reveal">
-            <h3>Оно тебе надо</h3>
-            <p>Учебный лендинг с акцентом на типографику, сетку и аккуратную вёрстку.</p>
-            <a href="https://repindm.github.io/ono-tebe-nado-fd/" target="_blank" class="project-link">
-              Открыть сайт
-            </a>
-          </article>
+      <div class="projects-grid">
+        <article class="project-card reveal">
+          <h3>Оно тебе надо</h3>
+          <p>Учебный лендинг с акцентом на типографику, сетку и аккуратную вёрстку.</p>
+          <a href="https://repindm.github.io/ono-tebe-nado-fd/" target="_blank" rel="noreferrer" class="project-link">
+            Открыть сайт
+          </a>
+        </article>
 
-          <article class="project-card reveal">
-            <h3>Сложно сосредоточиться</h3>
-            <p>Проект про флексы, адаптивность и работу с визуальной иерархией.</p>
-            <a href="https://repindm.github.io/slozhno-sosredotochitsya-fd/" target="_blank" class="project-link">
-              Открыть сайт
-            </a>
-          </article>
+        <article class="project-card reveal">
+          <h3>Сложно сосредоточиться</h3>
+          <p>Проект про флексы, адаптивность и работу с визуальной иерархией.</p>
+          <a href="https://repindm.github.io/slozhno-sosredotochitsya-fd/" target="_blank" rel="noreferrer" class="project-link">
+            Открыть сайт
+          </a>
+        </article>
 
-          <article class="project-card reveal">
-            <h3>Закрывающий тег</h3>
-            <p>Семантическая вёрстка, формы и структурирование контента.</p>
-            <a href="https://repindm.github.io/zakrivayuschiy-teg-f/" target="_blank" class="project-link">
-              Открыть сайт
-            </a>
-          </article>
+        <article class="project-card reveal">
+          <h3>Закрывающий тег</h3>
+          <p>Семантическая вёрстка, формы и структурирование контента.</p>
+          <a href="https://repindm.github.io/zakrivayuschiy-teg-f/" target="_blank" rel="noreferrer" class="project-link">
+            Открыть сайт
+          </a>
+        </article>
 
-          <article class="project-card reveal">
-            <h3>Посмотри в окно</h3>
-            <p>Адаптивный макет с акцентом на работу с изображениями и текстом.</p>
-            <a href="https://repindm.github.io/posmotri-v-okno-fd/" target="_blank" class="project-link">
-              Открыть сайт
-            </a>
-          </article>
+        <article class="project-card reveal">
+          <h3>Посмотри в окно</h3>
+          <p>Адаптивный макет с акцентом на работу с изображениями и текстом.</p>
+          <a href="https://repindm.github.io/posmotri-v-okno-fd/" target="_blank" rel="noreferrer" class="project-link">
+            Открыть сайт
+          </a>
+        </article>
 
-          <article class="project-card reveal">
-            <h3>Smart Table</h3>
-            <p>Таблица с упором на читаемость и аккуратный интерфейс.</p>
-            <a href="https://github.com/RepinDM/smart-table" target="_blank" class="project-link">
-              Репозиторий GitHub
-            </a>
-          </article>
+        <article class="project-card reveal">
+          <h3>Smart Table</h3>
+          <p>Таблица с упором на читаемость и аккуратный интерфейс.</p>
+          <a href="https://repindm.github.io/smart-table/" target="_blank" rel="noreferrer" class="project-link">
+            Открыть сайт
+          </a>
+        </article>
 
-          <article class="project-card reveal">
-            <h3>Личный лендинг</h3>
-            <p>Текущий сайт-портфолио с анимациями, тёмной темой и формой связи.</p>
-            <a href="https://repindm.github.io/HTY" target="_blank" class="project-link">
-              Открыть сайт
-            </a>
-          </article>
-        </div>
+        <article class="project-card reveal">
+          <h3>Личный лендинг</h3>
+          <p>Текущий сайт-портфолио с анимациями, тёмной темой и формой связи.</p>
+          <a href="https://repindm.github.io/repin/" target="_blank" rel="noreferrer" class="project-link">
+            Открыть сайт
+          </a>
+        </article>
+      </div>
 
-        <div class="page-actions reveal">
-          <a href="contacts.html" class="btn">Связаться со мной</a>
-        </div>
+      <!-- Кнопка как на других страницах -->
+      <div class="page-actions">
+        <a href="contacts.html" class="btn">Связаться со мной</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2025 Repin. Сделано с любовью к фронтенду.</p>
+    © 2025 Repin. Сделано с любовью к фронтенду.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

@@ -2,18 +2,26 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Контакты — Repin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="script.js"></script>
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html" class="logo">Repin</a>
+      <a href="index.html" class="logo">REPIN</a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Главная</a>
         <a href="about.html" class="nav-link">Обо мне</a>
@@ -24,44 +32,46 @@
     </nav>
   </header>
 
-  <main class="contacts-section">
-    <div class="container">
-      <h1 class="section-title reveal">Связаться со мной</h1>
-      <p class="section-subtitle reveal">
-        Расскажите немного о задаче или проекте — отвечу, как только смогу.
-      </p>
+  <main>
+    <section class="contacts-section">
+      <div class="container">
+        <h1 class="section-title">Связаться со мной</h1>
+        <p class="section-subtitle">
+          Расскажите о задаче, и я отвечу, как могу помочь с вёрсткой или фронтендом.
+        </p>
+      </div>
 
-      <form class="contact-form reveal" id="contactForm">
+      <form class="contact-form" id="contact-form">
         <div class="form-row">
           <div class="form-field">
             <label for="name">Имя</label>
-            <input type="text" id="name" name="name" placeholder="Ваше имя" required />
+            <input id="name" name="name" type="text" placeholder="Ваше имя" required />
           </div>
           <div class="form-field">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            <input id="email" name="email" type="email" placeholder="you@example.com" required />
           </div>
         </div>
 
         <div class="form-row">
           <div class="form-field">
-            <label for="topic">Тип запроса</label>
-            <select id="topic" name="topic">
-              <option value="site">Заказ сайта / лендинга</option>
-              <option value="frontend">Фронтенд-задача / верстка</option>
-              <option value="study">Вопрос по обучению</option>
-              <option value="other">Другое</option>
+            <label for="type">Тип запроса</label>
+            <select id="type" name="type">
+              <option>Заказ сайта / лендинга</option>
+              <option>Правки и доработки</option>
+              <option>Верстка по макету</option>
+              <option>Другое</option>
             </select>
           </div>
           <div class="form-field">
-            <label for="tg">Telegram (опционально)</label>
-            <input type="text" id="tg" name="tg" placeholder="@username" />
+            <label for="telegram">Telegram (опционально)</label>
+            <input id="telegram" name="telegram" type="text" placeholder="@username" />
           </div>
         </div>
 
         <div class="form-field">
           <label for="message">Сообщение</label>
-          <textarea id="message" name="message" rows="7" placeholder="Опишите задачу или идею" required></textarea>
+          <textarea id="message" name="message" placeholder="Опишите задачу или идею" required></textarea>
         </div>
 
         <div class="form-footer">
@@ -72,19 +82,21 @@
           <button type="submit" class="btn">Отправить</button>
         </div>
 
-        <p class="form-status" id="formStatus" aria-live="polite"></p>
+        <div class="form-status" id="form-status"></div>
       </form>
 
-      <div class="social-links reveal">
-        <a href="mailto:dmrepin26@yandex.ru">Email</a>
-        <a href="https://t.me/Repin26" target="_blank">Telegram</a>
-        <a href="https://github.com/RepinDM" target="_blank">GitHub</a>
+      <div class="social-links">
+        <a href="mailto:you@example.com">Email</a>
+        <a href="https://t.me/username" target="_blank" rel="noreferrer">Telegram</a>
+        <a href="https://github.com/RepinDM" target="_blank" rel="noreferrer">GitHub</a>
       </div>
-    </div>
+    </section>
   </main>
 
   <footer>
-    <p>Repin D.A.</p>
+    © 2025 Repin. Сделано с любовью к фронтенду.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>

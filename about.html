@@ -2,18 +2,26 @@
 <html lang="ru">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Обо мне — Repin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <script src="script.js"></script>
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme');
+        if (stored === 'dark') {
+          document.documentElement.classList.add('dark');
+        }
+      } catch (e) {}
+    })();
+  </script>
 
   <link rel="stylesheet" href="style.css" />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav>
-      <a href="index.html" class="logo">Repin</a>
+      <a href="index.html" class="logo">REPIN</a>
       <div class="nav-links">
         <a href="index.html" class="nav-link">Главная</a>
         <a href="about.html" class="nav-link active">Обо мне</a>
@@ -27,79 +35,67 @@
   <main>
     <section class="about-section">
       <div class="about-inner">
-        <!-- Левая колонка: карточка с фото и стеком -->
         <div class="about-left">
-          <div class="about-card reveal">
+          <div class="about-card">
             <div class="about-photo-wrapper">
-              <img src="images/photo2.jpg" alt="Фото Дмитрия Репина" class="profile-photo" />
+              <img src="images/photo2.jpg" alt="Дима Репин" class="profile-photo" />
             </div>
 
             <div class="tech-block">
               <h3>Технологии</h3>
-              <p class="tech-note">
-                Нажми на любую технологию — откроется документация (MDN или официальные доки).
-              </p>
+              <p class="tech-note">Нажми на любую технологию — откроется документация (MDN или официальные доки).</p>
               <ul class="tech-list">
-                <li><a class="tech-pill" href="https://developer.mozilla.org/en-US/docs/Web/HTML" target="_blank">HTML5</a></li>
-                <li><a class="tech-pill" href="https://developer.mozilla.org/en-US/docs/Web/CSS" target="_blank">CSS3</a></li>
-                <li><a class="tech-pill" href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank">JavaScript (ES6+)</a></li>
-                <li><a class="tech-pill" href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_media_queries/Using_media_queries" target="_blank">Адаптивная вёрстка</a></li>
-                <li><a class="tech-pill" href="https://en.bem.info/methodology/" target="_blank">БЭМ</a></li>
-                <li><a class="tech-pill" href="https://sass-lang.com/guide" target="_blank">Sass</a></li>
-                <li><a class="tech-pill" href="https://vitejs.dev/guide/" target="_blank">Vite</a></li>
-                <li><a class="tech-pill" href="https://react.dev/learn" target="_blank">React</a></li>
-                <li><a class="tech-pill" href="https://www.typescriptlang.org/docs/" target="_blank">TypeScript</a></li>
-                <li><a class="tech-pill" href="https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API" target="_blank">Fetch API</a></li>
-                <li><a class="tech-pill" href="https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/GitHub" target="_blank">Git &amp; GitHub</a></li>
+                <li><a class="tech-pill" href="https://developer.mozilla.org/ru/docs/Web/HTML" target="_blank" rel="noreferrer">HTML5</a></li>
+                <li><a class="tech-pill" href="https://developer.mozilla.org/ru/docs/Web/CSS" target="_blank" rel="noreferrer">CSS3</a></li>
+                <li><a class="tech-pill" href="https://developer.mozilla.org/ru/docs/Web/JavaScript" target="_blank" rel="noreferrer">JavaScript (ES6+)</a></li>
+                <li><a class="tech-pill" href="https://en.bem.info/methodology/" target="_blank" rel="noreferrer">БЭМ</a></li>
+                <li><a class="tech-pill" href="https://sass-lang.com/guide/" target="_blank" rel="noreferrer">Sass</a></li>
+                <li><a class="tech-pill" href="https://vitejs.dev/guide/" target="_blank" rel="noreferrer">Vite</a></li>
+                <li><a class="tech-pill" href="https://react.dev/learn" target="_blank" rel="noreferrer">React</a></li>
+                <li><a class="tech-pill" href="https://www.typescriptlang.org/docs/handbook/intro.html" target="_blank" rel="noreferrer">TypeScript</a></li>
+                <li><a class="tech-pill" href="https://developer.mozilla.org/ru/docs/Web/API/Fetch_API" target="_blank" rel="noreferrer">Fetch API</a></li>
+                <li><a class="tech-pill" href="https://docs.github.com" target="_blank" rel="noreferrer">Git &amp; GitHub</a></li>
               </ul>
             </div>
           </div>
         </div>
 
-        <!-- Правая колонка: текст -->
         <div class="about-text">
           <h1 class="reveal">Привет! Я Дима Репин</h1>
           <h2 class="reveal">Frontend-разработчик в процессе прокачки</h2>
 
           <p class="reveal">
-            Люблю аккуратную вёрстку, читаемый код и интерфейсы без визуального шума.
-            Начинал с классической HTML/CSS-вёрстки, сейчас активно ухожу в
-            современный фронтенд: <strong>React</strong>, <strong>TypeScript</strong>,
-            сборщики и архитектуру.
+            Люблю аккуратную вёрстку, читаемый код и интерфейсы без визуального шума. Начинал с классической HTML/CSS-вёрстки,
+            сейчас активно ухожу в современный фронтенд: <strong>React</strong>, <strong>TypeScript</strong>, сборщики и архитектуру.
           </p>
 
           <p class="reveal">
-            В проектах стараюсь соблюдать семантику, адаптивность и методологию БЭМ,
-            внимательно работаю с макетами и типографикой. Нравится, когда интерфейс
-            понятен без лишних подсказок.
+            В проектах стараюсь соблюдать семантику, адаптивность и методологию БЭМ, внимательно работаю с макетами и типографикой.
+            Нравится, когда интерфейс понятен без лишних подсказок.
           </p>
 
-          <ul class="about-list reveal">
-            <li>
+          <ul class="about-list">
+            <li class="reveal">
               <span class="about-label">Сейчас изучаю</span>
               <span class="about-value">
-                React и TypeScript: компоненты, хуки, состояние, контекст,
-                базовый роутинг и работу с данными.
+                React и TypeScript: компоненты, хуки, состояние, контекст, базовый роутинг и работу с данными.
               </span>
             </li>
-            <li>
+            <li class="reveal">
               <span class="about-label">Что уже знаю</span>
               <span class="about-value">
-                HTML5, CSS3, адаптивная вёрстка, БЭМ, Sass, Vite,
-                JavaScript (ES6+), Git/GitHub, базовая работа с макетами в Figma.
+                HTML5, CSS3, адаптивная вёрстка, БЭМ, Sass, Vite, JavaScript (ES6+), Git/GitHub, базовая работа с макетами в Figma.
               </span>
             </li>
-            <li>
+            <li class="reveal">
               <span class="about-label">Цели</span>
               <span class="about-value">
-                Собрать портфолио из практических проектов на React + TypeScript и выйти
-                на позицию junior frontend-разработчика.
+                Собрать портфолио из практических проектов на React + TypeScript и выйти на позицию junior frontend-разработчика.
               </span>
             </li>
           </ul>
 
-          <!-- Кнопки по центру -->
-          <div class="about-actions reveal centered-actions">
+          <div class="about-actions reveal">
             <a href="projects.html" class="btn">Смотреть проекты</a>
             <a href="contacts.html" class="btn">Связаться со мной</a>
           </div>
@@ -109,7 +105,9 @@
   </main>
 
   <footer>
-    <p>© 2025 Repin. Сделано с любовью к фронтенду.</p>
+    © 2025 Repin. Сделано с любовью к фронтенду.
   </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
