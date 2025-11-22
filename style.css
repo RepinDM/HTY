@@ -1,3 +1,4 @@
+
 /* 🌿 Базовые стили */
 * {
   margin: 0;
@@ -55,7 +56,7 @@ html.dark header {
 
 header.scrolled {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-} 
+}
 
 nav {
   max-width: 1080px;
@@ -67,6 +68,7 @@ nav {
   gap: 12px;
 }
 
+/* Логотип — текст REPIN */
 .logo {
   font-weight: 700;
   font-size: 1.3rem;
@@ -76,6 +78,7 @@ nav {
   text-transform: uppercase;
 }
 
+/* Навигация */
 .nav-links {
   display: flex;
   gap: 18px;
@@ -119,6 +122,7 @@ html.dark .nav-link:hover {
   width: 100%;
 }
 
+/* Переключатель темы */
 .theme-toggle {
   border: none;
   background: rgba(0, 0, 0, 0.04);
@@ -197,7 +201,12 @@ html.dark .hero-subtitle {
   flex-wrap: wrap;
 }
 
-/* ОБО МНЕ СТРАНИЦА */
+/* Нижний блок с кнопками для адаптива (по умолчанию скрыт) */
+.hero-actions-bottom {
+  display: none;
+}
+
+/* ОБО МНЕ */
 .about-section {
   padding: 64px 16px 48px;
 }
@@ -254,6 +263,10 @@ html.dark .about-card {
   }
 }
 
+.about-text {
+  position: relative;
+}
+
 .about-text h1 {
   font-size: clamp(2rem, 2.6vw + 1.3rem, 2.6rem);
   margin-bottom: 8px;
@@ -277,7 +290,7 @@ html.dark .about-text h2 {
 
 .about-list {
   list-style: none;
-  margin: 22px 0 22px;
+  margin: 18px 0 22px;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -298,6 +311,11 @@ html.dark .about-label {
 .about-value {
   font-size: 0.93rem;
   line-height: 1.6;
+}
+
+
+.about-mark {
+  display: none;
 }
 
 /* Технологии */
@@ -417,9 +435,7 @@ html.dark .section-subtitle {
 }
 
 /* ЧЕМ МОГУ БЫТЬ ПОЛЕЗЕН */
-.services-section {
-  padding: 40px 0 60px;
-}
+
 
 .services-grid {
   display: grid;
@@ -501,6 +517,7 @@ html.dark .service-card p {
   display: inline-flex;
   align-items: center;
   gap: 6px;
+  font-weight: 500;
 }
 
 .project-link::after {
@@ -521,6 +538,17 @@ html.dark .project-card {
 
 html.dark .project-card p {
   color: #d1d1d1;
+}
+
+/* ссылки в тёмной теме — заметные */
+html.dark .project-link {
+  color: #ffffff;
+  opacity: 0.9;
+}
+
+html.dark .project-link:hover {
+  color: #ffd86b;
+  opacity: 1;
 }
 
 /* КОНТАКТЫ */
@@ -693,7 +721,7 @@ html.dark footer {
   color: #9d9d9d;
 }
 
-/* Reveal-анимация (минималистичная) */
+/* Reveal-анимация */
 .reveal {
   opacity: 0;
   transform: translateY(16px);
@@ -705,7 +733,7 @@ html.dark footer {
   transform: translateY(0);
 }
 
-/* Адаптив */
+/* Адаптив ≤ 900px (планшеты + мобилки) */
 @media (max-width: 900px) {
   .about-inner,
   .hero-inner {
@@ -720,27 +748,102 @@ html.dark footer {
   .profile-photo {
     margin-bottom: 10px;
   }
-}
 
-@media (max-width: 720px) {
+  /* Шапка: логотип по центру, меню снизу, тема справа */
   nav {
-    padding-inline: 10px;
+    width: 100%;
+    padding: 14px 14px 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    gap: 6px;
+  }
+
+  .logo {
+    order: 1;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .theme-toggle {
+    order: 2;
+    position: absolute;
+    top: 10px;
+    right: 14px;
+    margin: 0;
   }
 
   .nav-links {
-    gap: 12px;
+    order: 3;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 6px;
     flex-wrap: wrap;
-    justify-content: flex-end;
   }
 
-  .hero-section {
-    padding-top: 52px;
+  .nav-link {
+    font-size: 1.05rem;
   }
 
-  .hero-subtitle {
-    max-width: 100%;
+  /* на планшетах и мобилках верхний блок кнопок прячем */
+  .hero-section .hero-actions {
+    display: none;
   }
 
+  /* и показываем нижний блок после "Чем могу быть полезен" */
+  .hero-actions-bottom {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+    margin: 24px auto 32px;
+    padding: 0 16px;
+    max-width: 1080px;
+  }
+
+  .hero-actions-bottom .btn {
+    width: 100%;
+    max-width: 320px;
+    justify-content: center;
+    text-align: center;
+  }
+  
+.about-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  margin-top: 28px;
+}
+
+.about-actions .btn {
+  width: 100%;
+  max-width: 320px;
+  justify-content: center;
+}
+.page-actions {
+    display: flex !important;
+    justify-content: center !important;
+    width: 100% !important;
+    margin: 28px 0 40px !important;
+    padding: 0 16px !important;
+  }
+
+  .page-actions .btn {
+    width: 100% !important;
+    max-width: 320px !important;
+    justify-content: center !important;
+    text-align: center !important;
+  }
+
+}
+
+/* Адаптив ≤ 720px (телефоны) */
+@media (max-width: 720px) {
   .projects-grid {
     padding-inline: 12px;
   }
@@ -753,7 +856,7 @@ html.dark footer {
     grid-template-columns: minmax(0, 1fr);
   }
 
-  /* было align-items: flex-start; — меняем на центр + растягиваем кнопку */
+  /* форма: кнопка отправки по центру и на всю ширину */
   .form-footer {
     flex-direction: column;
     align-items: center;
@@ -761,18 +864,27 @@ html.dark footer {
   }
 
   .form-footer .btn {
-    width: 100%;          /* кнопка во всю ширину формы */
+    width: 100%;
     justify-content: center;
   }
+
+  /* кнопка на странице проектов по центру и на всю ширину */
   .page-actions {
     display: flex;
     justify-content: center;
     width: 100%;
     padding: 0 10px;
+    margin-top: 24px;
+    margin-bottom: 40px;
   }
 
   .page-actions .btn {
     width: 100%;
+    max-width: 320px;
     justify-content: center;
+  }
+
+  .projects-section .page-actions {
+    margin-top: 30px;
   }
 }
