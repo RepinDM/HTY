@@ -555,6 +555,16 @@ html.dark .project-link:hover {
 }
 
 /* КОНТАКТЫ */
+.contacts-section .section-title {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.contacts-section .section-subtitle {
+  text-align: center;
+  margin-bottom: 26px;
+}
+
 .contacts-section {
   padding: 64px 0 40px;
 }
