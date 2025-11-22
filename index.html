@@ -3,53 +3,83 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Repin</title>
+  <title>Repin — Frontend Developer</title>
+
+  <!-- Скрипт с темой и логикой (подключён до CSS, чтобы не мигала тема) -->
+  <script src="script.js"></script>
+
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
 </head>
 <body>
   <header>
     <nav>
-      
-      <a href="contacts.html" class="nav-link">Контакты</a>
+      <a href="index.html" class="logo">Repin</a>
+      <div class="nav-links">
+        <a href="index.html" class="nav-link active">Главная</a>
+        <a href="about.html" class="nav-link">Обо мне</a>
+        <a href="projects.html" class="nav-link">Проекты</a>
+        <a href="contacts.html" class="nav-link">Контакты</a>
+      </div>
+      <button class="theme-toggle" aria-label="Переключить тему">🌙</button>
     </nav>
   </header>
 
-  <main class="about-section">
-    <img src="images/photo.jpg" alt="Моё фото" class="profile-photo reveal" />
-    <div class="about-text">
-      <h1 class="reveal">Привет, я Дима Репин</h1>
-      <h2 class="reveal">Frontend Developer & UI Enthusiast</h2>
-      <p class="reveal">Функциональный код. Чистый дизайн.<br> Создаю современные веб-интерфейсы с вниманием к деталям и эстетике.</p>
-      <a href="contacts.html" class="btn reveal">Связаться</a>
-    </div>
+  <main>
+    <!-- HERO с фото -->
+    <section class="hero-section">
+      <div class="hero-inner">
+        <div class="hero-photo-wrapper reveal">
+          <img src="images/photo.jpg" alt="Фото Дмитрия Репина" class="profile-photo" />
+        </div>
+        <div class="hero-content">
+          <p class="hero-label reveal">Frontend Developer</p>
+          <h1 class="hero-title reveal">Привет! Я Дима Репин.</h1>
+          <p class="hero-subtitle reveal">
+            Функциональный код. Чистый дизайн. Создаю современные веб-интерфейсы
+            с аккуратной вёрсткой и понятной структурой. Сейчас углубляюсь
+            в <strong>React</strong> и <strong>TypeScript</strong>.
+          </p>
+          <div class="hero-actions reveal">
+            <a href="about.html" class="btn">Подробнее обо мне</a>
+            <a href="projects.html" class="btn">Смотреть проекты</a>
+            <a href="contacts.html" class="btn">Связаться со мной</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ЧЕМ МОГУ БЫТЬ ПОЛЕЗЕН -->
+    <section class="services-section">
+      <div class="container">
+        <h2 class="section-title reveal">Чем могу быть полезен</h2>
+        <p class="section-subtitle reveal">
+          Работаю c вёрсткой по макетам, аккуратными лендингами и интерфейсами без визуального шума.
+        </p>
+        <div class="services-grid">
+          <article class="service-card reveal">
+            <h3>Лендинги и простые сайты</h3>
+            <p>Собираю аккуратные лендинги по макету или с нуля: семантическая вёрстка, структура, базовая анимация.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Адаптивная вёрстка</h3>
+            <p>Страницы, которые одинаково приятно выглядят на десктопе, планшете и телефоне.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Вёрстка по Figma</h3>
+            <p>Аккуратно переношу дизайн из Figma в код, соблюдая отступы, сетку и типографику.</p>
+          </article>
+          <article class="service-card reveal">
+            <h3>Правки и доработки</h3>
+            <p>Исправляю баги в вёрстке, правлю адаптив, навожу порядок в стилях и структуре проекта.</p>
+          </article>
+        </div>
+      </div>
+    </section>
   </main>
 
   <footer>
-    <p>Repin D.A.</p>
+    <p>© 2025 Repin. Сделано с любовью к фронтенду.</p>
   </footer>
-
-  <script>
-    // Анимация появления при прокрутке
-    const reveals = document.querySelectorAll('.reveal');
-    function revealOnScroll() {
-      for (let el of reveals) {
-        const windowHeight = window.innerHeight;
-        const elementTop = el.getBoundingClientRect().top;
-        if (elementTop < windowHeight - 100) {
-          el.classList.add('visible');
-        }
-      }
-    }
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-
-    // Тень у шапки при прокрутке
-    const header = document.querySelector('header');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 50) header.classList.add('scrolled');
-      else header.classList.remove('scrolled');
-    });
-  </script>
 </body>
 </html>
