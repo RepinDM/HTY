@@ -482,6 +482,18 @@ html.dark .service-card p {
 .projects-section {
   padding: 64px 0 60px;
 }
+/* Центрирование заголовка и подзаголовка на странице Проекты */
+.projects-section .section-title,
+.projects-section .section-subtitle {
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.projects-section .section-subtitle {
+  max-width: 680px; /* чтобы красивее читалось */
+}
+
 
 .projects-grid {
   max-width: 1080px;
