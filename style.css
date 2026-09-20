@@ -191,7 +191,8 @@ html.dark .hero-subtitle {
 }
 
 .hero-actions .btn {
-  width: 190px;
+  width: auto;
+  min-width: 0;
 }
 
 .hero-actions-bottom {
