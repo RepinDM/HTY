@@ -65,9 +65,8 @@ http://localhost:8000
 
 ## Future Improvements
 
-- Semantic/accessibility audit
-- SEO/meta improvements
-- Possible future migration to React + TypeScript
+- Additional project case studies
+- Further accessibility testing
 
 ## Author
 

@@ -191,7 +191,8 @@ html.dark .hero-subtitle {
 }
 
 .hero-actions .btn {
-  width: 190px;
+  width: auto;
+  min-width: 0;
 }
 
 .hero-actions-bottom {
@@ -615,7 +616,7 @@ html.dark .project-link-secondary:hover {
 }
 
 .projects-subheading {
-  margin: 34px 0 18px;
+  margin: 56px 0 24px;
   font-size: 1.15rem;
   text-align: center;
 }
@@ -908,5 +909,27 @@ html.dark footer {
   .social-links a {
     width: 100%;
     max-width: 360px;
+  }
+}
+
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid #f5b400;
+  outline-offset: 3px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  .profile-photo {
+    animation: none;
+  }
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
   }
 }

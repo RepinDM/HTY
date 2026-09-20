@@ -4,11 +4,17 @@ function setTheme(mode) {
   if (mode === 'dark') {
     document.documentElement.classList.add('dark');
     localStorage.setItem('theme', 'dark');
-    if (themeToggle) themeToggle.textContent = '☀️';
+    if (themeToggle) {
+      themeToggle.textContent = '☀️';
+      themeToggle.setAttribute('aria-label', 'Включить светлую тему');
+    }
   } else {
     document.documentElement.classList.remove('dark');
     localStorage.setItem('theme', 'light');
-    if (themeToggle) themeToggle.textContent = '🌙';
+    if (themeToggle) {
+      themeToggle.textContent = '🌙';
+      themeToggle.setAttribute('aria-label', 'Включить тёмную тему');
+    }
   }
 }
 
