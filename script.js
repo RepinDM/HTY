@@ -1,4 +1,3 @@
-// Переключение темы
 const themeToggle = document.querySelector('.theme-toggle');
 
 function setTheme(mode) {
@@ -22,7 +21,6 @@ function setTheme(mode) {
       setTheme('light');
     }
   } catch (e) {
-    // если localStorage недоступен
   }
 })();
 
@@ -33,7 +31,6 @@ if (themeToggle) {
   });
 }
 
-// Скролл — тень у шапки и фон body
 const header = document.querySelector('header');
 
 function handleScroll() {
@@ -45,7 +42,6 @@ function handleScroll() {
 window.addEventListener('scroll', handleScroll);
 handleScroll();
 
-// Reveal-анимация
 const revealItems = document.querySelectorAll('.reveal');
 
 if ('IntersectionObserver' in window && revealItems.length) {
@@ -63,26 +59,5 @@ if ('IntersectionObserver' in window && revealItems.length) {
 
   revealItems.forEach((el) => observer.observe(el));
 } else {
-  // fallback: сразу показать
   revealItems.forEach((el) => el.classList.add('visible'));
-}
-
-// Форма контактов — фейковая отправка
-const contactForm = document.getElementById('contact-form');
-const formStatus = document.getElementById('form-status');
-
-if (contactForm) {
-  contactForm.addEventListener('submit', (e) => {
-    e.preventDefault();
-    if (!contactForm.reportValidity()) return;
-
-    if (formStatus) {
-      formStatus.textContent = 'Спасибо! Сообщение не отправилось, но форма уже готова к интеграции 🙂';
-    }
-    contactForm.classList.add('sent');
-
-    setTimeout(() => {
-      contactForm.classList.remove('sent');
-    }, 1500);
-  });
 }
