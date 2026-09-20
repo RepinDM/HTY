@@ -190,6 +190,10 @@ html.dark .hero-subtitle {
   flex-wrap: wrap;
 }
 
+.hero-actions .btn {
+  width: 190px;
+}
+
 .hero-actions-bottom {
   display: none;
 }
