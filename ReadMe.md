@@ -4,9 +4,9 @@ Responsive personal portfolio website built with HTML, CSS and JavaScript as a u
 
 ## Live Demo
 
-Live Demo: https://repindm.github.io/HTY/
+Live Demo: https://repindm.github.io/portfolio-website/
 
-Repository: https://github.com/RepinDM/HTY
+Repository: https://github.com/RepinDM/portfolio-website
 
 ## Project Context
 
