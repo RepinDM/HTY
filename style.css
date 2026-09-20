@@ -138,7 +138,7 @@ main {
 }
 
 .hero-section {
-  padding: 64px 16px 40px;
+  padding: 88px 16px 64px;
 }
 
 .hero-inner {
@@ -146,7 +146,7 @@ main {
   margin: 0 auto;
   display: grid;
   grid-template-columns: minmax(0, 1.1fr) minmax(0, 1.4fr);
-  gap: 40px;
+  gap: 56px;
   align-items: center;
 }
 
@@ -169,7 +169,7 @@ html.dark .hero-label {
 
 .hero-title {
   font-size: clamp(2.1rem, 3vw + 1rem, 2.8rem);
-  margin-bottom: 10px;
+  margin-bottom: 16px;
 }
 
 .hero-subtitle {
@@ -177,7 +177,7 @@ html.dark .hero-label {
   font-size: 0.98rem;
   line-height: 1.7;
   color: #555;
-  margin-bottom: 20px;
+  margin-bottom: 28px;
 }
 
 html.dark .hero-subtitle {
@@ -195,7 +195,10 @@ html.dark .hero-subtitle {
 }
 
 .about-section {
-  padding: 64px 16px 48px;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  align-items: center;
+  padding: 72px 16px 80px;
 }
 
 .about-inner {
@@ -203,7 +206,7 @@ html.dark .hero-subtitle {
   margin: 0 auto;
   display: grid;
   grid-template-columns: 360px minmax(0, 1fr);
-  gap: 48px;
+  gap: 72px;
   align-items: flex-start;
 }
 
@@ -215,7 +218,7 @@ html.dark .hero-subtitle {
   width: 100%;
   background: #fff;
   border-radius: 24px;
-  padding: 24px;
+  padding: 28px;
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
@@ -271,16 +274,16 @@ html.dark .about-text h2 {
 }
 
 .about-text p {
-  margin-bottom: 14px;
+  margin-bottom: 18px;
   line-height: 1.7;
 }
 
 .about-list {
   list-style: none;
-  margin: 18px 0 22px;
+  margin: 28px 0 30px;
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 16px;
 }
 
 .about-label {
@@ -393,6 +396,10 @@ html.dark .btn:hover {
   flex-wrap: wrap;
   justify-content: center;
 }
+
+.about-actions {
+  margin-top: 16px;
+}
 .projects-section .page-actions {
   margin-top: 32px;
   margin-bottom: 40px;
@@ -401,13 +408,13 @@ html.dark .btn:hover {
 
 .section-title {
   font-size: 1.7rem;
-  margin-bottom: 8px;
+  margin-bottom: 12px;
 }
 
 .section-subtitle {
   font-size: 0.98rem;
   color: #666;
-  margin-bottom: 26px;
+  margin-bottom: 36px;
 }
 
 html.dark .section-subtitle {
@@ -415,19 +422,19 @@ html.dark .section-subtitle {
 }
 
 .services-section {
-  padding: 40px 0 60px;
+  padding: 72px 0 88px;
 }
 
 .services-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 18px;
+  gap: 24px;
 }
 
 .service-card {
   background: #fff;
   border-radius: 18px;
-  padding: 18px 18px 16px;
+  padding: 24px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
   transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.25s ease;
 }
@@ -477,13 +484,13 @@ html.dark .service-card p {
   padding: 0 16px 8px;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 18px;
+  gap: 24px;
 }
 
 .project-card {
   background: #fff;
   border-radius: 18px;
-  padding: 18px 18px 16px;
+  padding: 24px;
   box-shadow: 0 10px 26px rgba(0, 0, 0, 0.06);
   display: flex;
   flex-direction: column;
@@ -544,7 +551,7 @@ html.dark .service-card p {
 }
 
 .project-link::after {
-  content: "↗";
+  content: "\2197";
   font-size: 0.85em;
   opacity: 0.7;
 }
@@ -615,16 +622,20 @@ html.dark .project-link-secondary:hover {
 
 .contacts-section .section-title {
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 14px;
 }
 
 .contacts-section .section-subtitle {
   text-align: center;
-  margin-bottom: 26px;
+  margin-bottom: 36px;
 }
 
 .contacts-section {
-  padding: 64px 0 40px;
+  min-height: calc(100vh - 110px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 72px 0 88px;
 }
 
 .social-links {
@@ -637,8 +648,9 @@ html.dark .project-link-secondary:hover {
 
 .contacts-links {
   max-width: 760px;
-  margin: 30px auto 0;
+  margin: 0 auto;
   padding: 0 16px;
+  gap: 18px;
 }
 
 .social-links a {
@@ -728,9 +740,29 @@ html.dark footer {
 }
 
 @media (max-width: 900px) {
+  .hero-section {
+    padding: 56px 16px 48px;
+  }
+
+  .about-section {
+    min-height: auto;
+    align-items: initial;
+    padding: 56px 16px;
+  }
+
+  .services-section {
+    padding: 56px 0 64px;
+  }
+
+  .contacts-section {
+    min-height: auto;
+    padding: 56px 0;
+  }
+
   .about-inner,
   .hero-inner {
     grid-template-columns: minmax(0, 1fr);
+    gap: 32px;
     text-align: left;
   }
 
@@ -833,8 +865,26 @@ html.dark footer {
 }
 
 @media (max-width: 720px) {
+  .section-subtitle {
+    padding-inline: 16px;
+  }
+
+  .nav-links {
+    gap: 14px;
+  }
+
+  .nav-link {
+    font-size: 0.98rem;
+  }
+
   .projects-grid {
-    padding-inline: 12px;
+    padding-inline: 16px;
+  }
+
+  .about-card,
+  .service-card,
+  .project-card {
+    padding: 20px;
   }
 
   .project-actions {
